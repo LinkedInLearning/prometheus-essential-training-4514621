@@ -8,3 +8,13 @@ groups:
           severity: critical
         annotations:
           summary: "High scrape duration on web-server-1"
+  - name: example-scrape-down
+    rules:
+      - alert: ScrapeJobDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: p1
+        annotations:
+          summary: "Instance {{ $labels.instance }} is down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
