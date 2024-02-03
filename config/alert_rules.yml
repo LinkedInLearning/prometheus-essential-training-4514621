@@ -1,0 +1,10 @@
+groups:
+  - name: example-alerts
+    rules:
+      - alert: HighScrapeLatency
+        expr: scrape_duration_seconds{job="web-server-1"} > 0.5
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High scrape duration on web-server-1"
