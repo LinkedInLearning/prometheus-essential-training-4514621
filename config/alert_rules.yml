@@ -12,7 +12,7 @@ groups:
     rules:
       - alert: ScrapeJobDown
         expr: up == 0
-        for: 5m
+        for: 5s
         labels:
           severity: p1
         annotations:

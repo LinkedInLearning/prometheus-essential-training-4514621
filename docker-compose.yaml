@@ -14,3 +14,9 @@ services:
     image: prom/promlens
     ports:
       - 8080:8080
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - "./alertmanager/alertmanager.yml:/config/alertmanager.yml"
