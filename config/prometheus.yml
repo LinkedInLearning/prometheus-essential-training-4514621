@@ -3,6 +3,7 @@ global:
 
 rule_files:
   - '/etc/prometheus/alert_rules.yml'  # Specify the file containing your alerting rules.
+  - '/etc/prometheus/recording_rules.yml'
 
 scrape_configs:
   - job_name: 'web-server-1'
