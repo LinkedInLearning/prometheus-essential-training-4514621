@@ -24,3 +24,15 @@ services:
     image: prom/pushgateway
     ports:
       - 9091:9091
+  consul-server:
+    image: hashicorp/consul:1.11.2
+    restart: always
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+  consul-exporter:
+    image: prom/consul-exporter
+    ports:
+      - "9107:9107"
+    command: --consul.server=consul-server:8500
