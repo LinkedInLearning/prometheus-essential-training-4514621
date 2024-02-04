@@ -19,6 +19,12 @@ scrape_configs:
       - files:
         - '/etc/prometheus/dynamic_targets.json'
 
+  - job_name: myapp
+    scrape_interval: 10s
+    static_configs:
+    - targets:
+      - host.docker.internal:8082
+
 alerting:
   alertmanagers:
   - static_configs:
