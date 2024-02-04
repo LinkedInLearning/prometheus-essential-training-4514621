@@ -20,3 +20,7 @@ services:
       - "9093:9093"
     volumes:
       - "./alertmanager/alertmanager.yml:/config/alertmanager.yml"
+  pushgateway:
+    image: prom/pushgateway
+    ports:
+      - 9091:9091
