@@ -1,0 +1,42 @@
+global:
+  scrape_interval: 15s
+
+rule_files:
+  - '/etc/prometheus/alert_rules.yml'  # Specify the file containing your alerting rules.
+  - '/etc/prometheus/recording_rules.yml'
+
+scrape_configs:
+  - job_name: 'web-server-1'
+    static_configs:
+      - targets: ['web-server-1:9090']
+
+  - job_name: 'web-server-2'
+    static_configs:
+      - targets: ['web-server-2:9090']
+
+  - job_name: 'dynamic-web-servers'
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/dynamic_targets.json'
+
+  - job_name: myapp
+    scrape_interval: 10s
+    static_configs:
+    - targets:
+      - host.docker.internal:8082
+
+  - job_name: pushgateway
+    scrape_interval: 30s
+    static_configs:
+    - targets:
+      - pushgateway:9091
+
+  - job_name: 'consul'
+    static_configs:
+      - targets: ['consul-exporter:9107']
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'alertmanager:9093'

@@ -1,0 +1,4 @@
+[
+    {"targets": ["web-server-3:9090"]},
+    {"targets": ["web-server-4:9090"]}
+]
