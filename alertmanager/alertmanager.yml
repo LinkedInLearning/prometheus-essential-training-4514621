@@ -1,0 +1,15 @@
+route:
+  receiver: 'slack-notifications'
+  group_by: [severity]
+  routes:
+  - receiver: 'slack-notifications'
+    group_wait: 10s
+    matchers:
+    - severity=critical
+
+receivers:
+- name: 'slack-notifications'
+  slack_configs:
+  - api_url: '<slack-api-url-here>'
+    channel: '#<slack-channel-name-here>'
+    send_resolved: true

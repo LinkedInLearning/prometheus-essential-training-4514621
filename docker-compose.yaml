@@ -8,4 +8,31 @@ services:
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./config/alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - ./config/recording_rules.yml:/etc/prometheus/recording_rules.yml
       - ./config/dynamic_targets.json:/etc/prometheus/dynamic_targets.json
+  promlens:
+    image: prom/promlens
+    ports:
+      - 8080:8080
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - "./alertmanager/alertmanager.yml:/config/alertmanager.yml"
+  pushgateway:
+    image: prom/pushgateway
+    ports:
+      - 9091:9091
+  consul-server:
+    image: hashicorp/consul:1.11.2
+    restart: always
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+  consul-exporter:
+    image: prom/consul-exporter
+    ports:
+      - "9107:9107"
+    command: --consul.server=consul-server:8500

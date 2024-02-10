@@ -3,6 +3,7 @@ global:
 
 rule_files:
   - '/etc/prometheus/alert_rules.yml'  # Specify the file containing your alerting rules.
+  - '/etc/prometheus/recording_rules.yml'
 
 scrape_configs:
   - job_name: 'web-server-1'
@@ -26,3 +27,19 @@ scrape_configs:
     metric_relabel_configs:
     - action: labeldrop
       regex: instance|job
+
+  - job_name: pushgateway
+    scrape_interval: 30s
+    static_configs:
+    - targets:
+      - pushgateway:9091
+
+  - job_name: 'consul'
+    static_configs:
+      - targets: ['consul-exporter:9107']
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'alertmanager:9093'

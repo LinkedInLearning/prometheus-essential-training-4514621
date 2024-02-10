@@ -1,0 +1,5 @@
+groups:
+  - name: scrape-rules
+    rules:
+    - record: job:scrape_duration_seconds:sum
+      expr: sum by (job) (scrape_duration_seconds)
