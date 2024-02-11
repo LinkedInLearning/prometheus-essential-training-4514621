@@ -5,7 +5,7 @@ route:
   - receiver: 'slack-notifications'
     group_wait: 10s
     matchers:
-    - severity=critical
+    - severity=p1
 
 receivers:
 - name: 'slack-notifications'
