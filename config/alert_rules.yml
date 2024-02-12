@@ -18,3 +18,53 @@ groups:
         annotations:
           summary: "Instance {{ $labels.instance }} is down"
           description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+  
+  - name: example-latency
+    rules:
+    - alert: HighLatency
+      expr: |
+        histogram_quantile(0.9, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))
+          > 0.5
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High 90th Percentile Latency"
+        description: "The 90th percentile latency is above the threshold."
+
+  - name: example-throughput
+    rules:
+    - alert: LowThroughput
+      expr: |
+        sum(rate(http_requests_total[10m])) < 10000
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Low Throughput"
+        description: "The throughput is below the threshold for the last 5 minutes."
+  
+  - name: example-error-rate
+    rules:
+    - alert: HighErrorRate
+      expr: |
+        sum(rate(http_requests_total{code="500"}[5m])) 
+        / sum(rate(http_requests_total[5m])) > 0.01
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "High Error Rate"
+        description: "The error rate is above 1% for the last 5 minutes."
+
+  - name: example-saturation
+    rules:
+    - alert: CPUSaturation
+      expr: |
+        100 - (avg(irate(node_cpu_seconds_total{job="node-exporter", mode="idle"}[5m])) * 100) > 90
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "High CPU Saturation"
+        description: "The CPU saturation is above 90% for the last 5 minutes."
