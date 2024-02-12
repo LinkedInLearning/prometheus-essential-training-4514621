@@ -38,6 +38,10 @@ scrape_configs:
     static_configs:
       - targets: ['consul-exporter:9107']
 
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
 alerting:
   alertmanagers:
   - static_configs:

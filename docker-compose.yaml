@@ -36,3 +36,7 @@ services:
     ports:
       - "9107:9107"
     command: --consul.server=consul-server:8500
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    restart: unless-stopped
