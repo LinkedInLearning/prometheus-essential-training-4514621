@@ -22,10 +22,16 @@ To resolve this issue:
 
 ## Installing
 1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
+	- [Docker](https://docs.docker.com/desktop/install/mac-install/)
+    - Any IDE of your choosing. e.g. [Visual Studo Code](https://visualstudio.microsoft.com/)
+    - [Golang](https://go.dev/doc/install) - at least version 1.21
 2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
-
+3. When working with the sample HTTP server in `examples/http-server` (Chapter 2, Video 3 - Vector Matching), be sure to generate traffic using the simple bash script provided. This will ensure that metrics are populated when Prometheus scrapes the application:
+    ```
+    cd examples/http-server
+    go run main.go
+    ./generate-traffic.sh
+    ```
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
