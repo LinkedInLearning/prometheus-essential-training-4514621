@@ -1,6 +1,11 @@
 # Prometheus Essential Training
 This is the repository for the LinkedIn Learning course `Prometheus Essential Training`. The full course is available from [LinkedIn Learning][lil-course-url].
 
+![lil-thumbnail-url]
+
+<p>Prometheus is one of the most widely used, open-source monitoring systems in the industry. However, knowledge about how to use it can be hard to come by, particularly if you’re looking for clear, simple, approachable terms. In this course, instructor Opeyemi Onikute provides a high-level overview of what Prometheus is and shows you how to install, use, scale, and manage it.</p><p>Discover the skills and core concepts you need to know to succeed in system monitoring with Prometheus. Explore the basics of setup, configuration, querying, defining rules, instrumentation, storage, and more. Upon completing this course, you’ll be prepared to continue your system monitoring journey with Prometheus.</p>
+
+
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
@@ -33,8 +38,17 @@ To resolve this issue:
     ./generate-traffic.sh
     ```
 
+### Instructor
+
+Opeyemi Onikute
+
+Systems Reliability Engineer at Cloudflare
+                      
+
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/opeyemi-onikute?u=104).
+
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+[lil-course-url]: https://www.linkedin.com/learning/prometheus-essential-training
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D4D0DAQE5GUkZ_WssLQ/learning-public-crop_675_1200/0/1712173826683?e=2147483647&v=beta&t=hAXP8NLRQTmtf3EduGg2GP2RvgUjQCbGUrQz5iYkk7k
 
